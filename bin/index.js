@@ -39,19 +39,28 @@ const validator = require("../lib/main.js");
 
 const optionDefinitions = [
   {
+    name: "src",
+    alias: "s",
+    type: String,
+    multiple: false,
+    description: "The path of the commit message file given by the commit-msg hook.",
+    typeLabel: '<file>'
+  },
+  {
     name: "patterns",
     alias: "p",
     type: String,
     multiple: true,
-    description: "Use custom regexps to validate Git commit messages for your projects."
+    description: "Use custom regexps to validate Git commit messages for your projects.",
+    typeLabel: '<patterns>'
   },
   {
     name: "message",
     alias: "m",
     type: String,
     multiple: false,
-    description:
-      "Use a custom message at the end of the error message. For example a link to help understand your custom commit message rules."
+    description: "Use a custom message at the end of the error message. For example a link to help understand your custom commit message rules.",
+    typeLabel: '<message>'
   },
   {
     name: "continue",

@@ -67,13 +67,13 @@ $ yarn add @dwtechs/gitcommitvalidator --dev
 
 ```bash
 $ cd <git-project>
-$ gbvalidator
+$ gcvalidator
 ```
 
 Alternatively if you did not install GitCommitValidator globally you can use npx.
 
 ```bash
-$ npx gbvalidator
+$ npx gcvalidator
 ```
 
 Or as an npm script in your package.json.
@@ -86,10 +86,21 @@ Or as an npm script in your package.json.
 }
 ```
 
+### get the commit message
+
+The commit-msg hook takes one parameter, which is the path to a temporary file that contains the commit message written by the developer
+Therefore, you need to read the contents of the given file to provide the message:
+
+```bash
+$ npx gcvalidator --path $1
+```
+Where $1 is equal to simthing like : .git/COMMIT_EDITMSG
+
+Le library will read the file in order to get the commit message.
+
 ### Patterns
 
-- Default : **^(feat|fix|test|doc)\/[A-Z0-9\-\#]{2,25}\/([a-z0-9_\-\.]){3,40}$**
-- Release : **^release\/v[a-z0-9\+\-\.]{3,25}$**
+- Default : **^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert|)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9\\#-]{2,25}\\] [a-z0-9_\\. -]{3,60}$**
 
 The patterns follow the principles described [here](https://dwtechs.github.io/efficient-git/conventional-commit/).
 
@@ -97,7 +108,7 @@ You can use your own custom patterns by adding an optional regexp :
 
 ```bash
 $ cd <git-project>
-$ gcvalidator --patterns "^(feat|fix)\/([a-z0-9_#-\.\/]){3,50}$"
+$ gcvalidator --patterns "^(feat|fix)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9]{2,25}\\] [a-z0-9_\\. -]{3,60}$"
 ```
 
 _If you use this option for a npm command in package.json, you may need to properly escape your regex in order to get a valid JSON file._
@@ -158,7 +169,7 @@ In the package.json file :
 {
   "husky": {
     "hooks": {
-      "pre-commit": "gcvalidator"
+      "commit-msg": "gcvalidator"
     }
   }
 }
@@ -170,6 +181,7 @@ You can do it with any other tool, or work on Git pre commit hook directly.
 
 | Option       | Alias |  Type   |                                                                      description |
 | :----------  | :---: | :-----: | -------------------------------------------------------------------------------: |
+| --src        |  -s   | string  |                     The path of the temporary file containing the commit message |
 | --patterns   |  -p   | string  |                               Use a custom regex. You can send multiple patterns |
 | --message    |  -m   | string  |                             Add a custom message at the end of the error message |
 | --continue   |  -c   | string  | Prompt the user if the branch name is not valid, instead of stopping the process |
@@ -199,5 +211,4 @@ To contribute please read **[NOTICE.md](https://github.com/DWTechs/GitCommitVali
 | @dwtechs/checkhard | 2.19.0 |
 | command-line-args  | 5.2.1 |
 | command-line-usage | 6.1.3 |
-| current-git-branch | 1.1.0 |
 | prompts            | 2.4.2 |
