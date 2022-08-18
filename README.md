@@ -100,7 +100,7 @@ Le library will read the file in order to get the commit message.
 
 ### Patterns
 
-- Default : **^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert|)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9\\#-]{2,25}\\] [a-z0-9_\\. -]{3,60}$**
+- Default : **^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert)\([a-z0-9]{2,16}\): \[[A-Za-z0-9\#-]{2,12}\] [A-Za-z0-9_\. !-]{5,140}$**
 
 The patterns follow the principles described [here](https://dwtechs.github.io/efficient-git/conventional-commit/).
 

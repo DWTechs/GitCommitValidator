@@ -1,5 +1,5 @@
 const PatternService = require("../lib/pattern.js");
-const defaultPatterns = [ new RegExp('^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert|)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9\\#-]{2,25}\\] [a-z0-9_\\. -]{3,60}$','')];
+const defaultPatterns = [ new RegExp('^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert)\\([a-z0-9]{2,16}\\): \\[[A-Za-z0-9\\#-]{2,12}\\] [A-Za-z0-9_\\. !-]{5,140}$','')];
 
 test("['/toto/'] pattern to strict equal", () => {
   let pat = ['/toto/'];
