@@ -1,7 +1,9 @@
 
-[![License: MIT](https://img.shields.io/npm/l/@dwtechs/gitcommitvalidator.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/npm/l/@dwtechs/gitcommitvalidator.svg?color=brightgreen)](https://opensource.org/licenses/MIT)
 [![npm version](https://badge.fury.io/js/%40dwtechs%2Fgitcommitvalidator.svg)](https://www.npmjs.com/package/@dwtechs/gitcommitvalidator)
+[![last version release date](https://img.shields.io/github/release-date/DWTechs/GitCommitValidator)](https://www.npmjs.com/package/@dwtechs/gitcommitvalidator)
 ![Jest:coverage](https://img.shields.io/badge/Jest:coverage-100%25-brightgreen.svg)
+[![minified size](https://img.shields.io/bundlephobia/min/@dwtechs/gitcommitvalidator?color=brightgreen)](https://www.npmjs.com/package/@dwtechs/gitcommitvalidator)
 
 - [Synopsis](#synopsis)
 - [Motivation](#motivation)
@@ -67,13 +69,13 @@ $ yarn add @dwtechs/gitcommitvalidator --dev
 
 ```bash
 $ cd <git-project>
-$ gcvalidator
+$ gcvalidator --src <commit-message-file>
 ```
 
 Alternatively if you did not install GitCommitValidator globally you can use npx.
 
 ```bash
-$ npx gcvalidator
+$ npx gcvalidator --src <commit-message-file>
 ```
 
 Or as an npm script in your package.json.
@@ -86,15 +88,17 @@ Or as an npm script in your package.json.
 }
 ```
 
+**The most efficient way to use this library is to execute it in the Git commit-msg hook.**
+
 ### get the commit message
 
 The commit-msg hook takes one parameter, which is the path to a temporary file that contains the commit message written by the developer
 Therefore, you need to read the contents of the given file to provide the message:
 
 ```bash
-$ npx gcvalidator --path $1
+$ npx gcvalidator --src $1
 ```
-Where $1 is equal to simthing like : .git/COMMIT_EDITMSG
+Where $1 is equal to something like : .git/COMMIT_EDITMSG
 
 Le library will read the file in order to get the commit message.
 
@@ -108,7 +112,7 @@ You can use your own custom patterns by adding an optional regexp :
 
 ```bash
 $ cd <git-project>
-$ gcvalidator --patterns "^(feat|fix)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9]{2,25}\\] [a-z0-9_\\. -]{3,60}$"
+$ gcvalidator --src <commit-message-file> --patterns "^(feat|fix)\\([a-z0-9]{2,16}\\): \\[[A-Z0-9]{2,25}\\] [a-z0-9_\\. -]{3,60}$"
 ```
 
 _If you use this option for a npm command in package.json, you may need to properly escape your regex in order to get a valid JSON file._
@@ -118,7 +122,7 @@ You can use several patterns if needed :
 
 ```bash
 $ cd <git-project>
-$ gcvalidator --patterns "pattern1" "pattern2" "pattern3"
+$ gcvalidator --src <commit-message-file> --patterns "pattern1" "pattern2" "pattern3"
 ```
 
 If one of them is valid, the commit message will be valid.
@@ -130,7 +134,7 @@ You can customize the end of the error message :
 
 ```bash
 $ cd <git-project>
-$ gcvalidator --message "You can learn more about commit message conventions of this project on https://dwtechs.github.io/efficient-git/conventional-commit/"
+$ gcvalidator --src <commit-message-file> --message "You can learn more about commit message conventions of this project on https://dwtechs.github.io/efficient-git/conventional-commit/"
 ```
 
 ### Prompt
@@ -140,7 +144,7 @@ You can use the option "--continue" to prompt the user instead.
 
 ```bash
 $ cd <git-project>
-$ gcvalidator --continue
+$ gcvalidator --src <commit-message-file> --continue
 ```
 
 In this case the user will be prompted about the invalid commit. He will be able to keep going if he choose so.
@@ -157,11 +161,7 @@ $ gcvalidator --help
 
 ### Workflow integration
 
-Validate commit message on pre-commit with Husky :
-
-```bash
-$ npm install husky --save-dev
-```
+Validate commit message on commit-msg hook with Husky :
 
 In the package.json file :
 
