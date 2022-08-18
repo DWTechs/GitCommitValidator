@@ -1,0 +1,52 @@
+{
+  "name": "@dwtechs/gitcommitvalidator",
+  "version": "1.0.0",
+  "description": "Git commit message validator for clean workflow and better readability",
+  "keywords": [
+    "commit message",
+    "commit",
+    "hook",
+    "git",
+    "git hook",
+    "pre push",
+    "pre commit",
+    "husky"
+  ],
+  "homepage": "https://github.com/DWTechs/GitCommitValidator",
+  "main": "./lib/main.js",
+  "bin": {
+    "gcvalidator": "./bin/index.js"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "engines": {
+    "node": ">=8"
+  },
+  "author": {
+    "name": "Ludovic Cluber"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DWTechs/GitCommitValidator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DWTechs/GitCommitValidator/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@dwtechs/checkhard": "2.19.0",
+    "command-line-args": "5.2.1",
+    "command-line-usage": "6.1.3",
+    "current-git-branch": "1.1.0",
+    "prompts": "2.4.2"
+  },
+  "devDependencies": {
+    "jest": "28.1.3"
+  }
+}
