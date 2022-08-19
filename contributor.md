@@ -19,12 +19,12 @@
 
 # Workflow
 
-- create a branch following [these instructions](https://dwtechs.github.io/efficient-git/branch/)
+- Edit the message in ./tests/COMMIT_EDITMSG following [these instructions](https://dwtechs.github.io/efficient-git/branch/)
 
 - run the library :
 
   ```bash
-  $ node ./bin
+  $ node ./bin --src "./tests/COMMIT_EDITMSG"
   ```
 
 - test the library :
@@ -33,7 +33,7 @@
   $ npm run test
   ```
 
-- commit your work following [conventional commits rules](https://dwtechs.github.io/efficient-git/conventional-commit/) :
+- commit your work following [those simplified conventional commits rules](https://dwtechs.github.io/efficient-git/conventional-commit/) :
 
 ## Docker
 

@@ -95,4 +95,4 @@ const usage = commandLineUsage(usageSections);
 
 options.help
   ? console.log(usage)
-  : validator.test(options.patterns, options.message, options.continue);
+  : validator.test(options.src, options.patterns, options.message, options.continue);
