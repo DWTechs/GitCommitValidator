@@ -38,6 +38,9 @@ You can also set your own rules using [custom patterns](#patterns).
 
 ## Installation
 
+This library is written in Node.js.
+You must install Node.js and npm in order to run it. 
+
 ### npm
 
 ```bash
