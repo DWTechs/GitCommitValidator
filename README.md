@@ -36,6 +36,8 @@ The default pattern follows the principles described [here](https://dwtechs.gith
 
 You can also set your own rules using [custom patterns](#patterns).
 
+You can validate branch names as well with [GitBranchValidator](https://github.com/DWTechs/GitBranchValidator)
+
 ## Installation
 
 This library is written in Node.js.
@@ -67,8 +69,14 @@ $ yarn add @dwtechs/gitcommitvalidator --dev
 
 ## Usage
 
-**This library is meant to be used in the Git commit-msg hook.**
+**This library is meant to be used in the Git "commit-msg" hook.**
 Thus it is not bound to Javascript application only and can be used by any git repository.
+
+On server side hooks, it can be installed for "pre-receive" or "update" hook.
+
+You can learn more about Git hooks and how ti cutomize them in the [Git Manual](https://git-scm.com/book/en/v2/Customizing-Git-An-Example-Git-Enforced-Policy)
+
+Because hooks aren’t transferred with a clone of a project, you must distribute these scripts some other way and then have your users copy them to their .git/hooks directory and make them executable. You can distribute these hooks within the project or in a separate project, but Git will not set them up automatically for you.
 
 ### Command line
 
@@ -82,15 +90,6 @@ Alternatively if you did not install GitCommitValidator globally you can use npx
 $ npx gcvalidator --src <commit-message-file>
 ```
 
-Or as an script in your package.json.
-
-```json
-{
-  "scripts": {
-    "commit": "gcvalidator"
-  }
-}
-```
 
 ### get the commit message
 
@@ -156,13 +155,32 @@ $ gcvalidator --help
 
 ## options
 
-| Option       | Alias |  Type   |                                                                      description |
-| :----------  | :---: | :-----: | -------------------------------------------------------------------------------: |
-| --src        |  -s   | string  |                     The path of the temporary file containing the commit message |
-| --patterns   |  -p   | string  |                               Use a custom regex. You can send multiple patterns |
-| --message    |  -m   | string  |                             Add a custom message at the end of the error message |
-| --continue   |  -c   | string  | Prompt the user if the branch name is not valid, instead of stopping the process |
-| --help       |  -h   | boolean |                                                        Learn about library usage |
+| Option       | Alias |  Type   |                                                                            description |
+| :----------  | :---: | :-----: | -------------------------------------------------------------------------------------: |
+| --src        |  -s   | string  | The path of the temporary file containing the commit message (ex: .git/COMMIT_EDITMSG) |
+| --patterns   |  -p   | string  |                                     Use custom regexps. You can send multiple patterns |
+| --message    |  -m   | string  |                                   Add a custom message at the end of the error message |
+| --continue   |  -c   | string  |    Prompt the user if the commit message is not valid, instead of stopping the process |
+| --help       |  -h   | boolean |                                                              Learn about library usage |
+
+
+### Workflow integration
+
+Validate commit messages on commit-msg hook by adding the following code in the .git/hooks/commit-msg file : 
+
+```bash
+gcvalidator -src "$1"
+```
+
+You can use GitBranchValidator as well : 
+
+```bash
+gbvalidator && gcvalidator -src "$1"
+```
+
+You can find git hooks examples in the ./hooks/ folder.
+To install them just paste them in the .git/hooks/ folder of your repositories.
+
 
 ## Contributors
 
