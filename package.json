@@ -23,7 +23,8 @@
   },
   "files": [
     "bin/",
-    "lib/"
+    "lib/",
+    "hooks/"
   ],
   "engines": {
     "node": ">=8"
