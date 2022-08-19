@@ -153,17 +153,6 @@ You can access the documentation by passing the "help" parameter :
 $ gcvalidator --help
 ```
 
-## options
-
-| Option       | Alias |  Type   |                                                                            description |
-| :----------  | :---: | :-----: | -------------------------------------------------------------------------------------: |
-| --src        |  -s   | string  | The path of the temporary file containing the commit message (ex: .git/COMMIT_EDITMSG) |
-| --patterns   |  -p   | string  |                                     Use custom regexps. You can send multiple patterns |
-| --message    |  -m   | string  |                                   Add a custom message at the end of the error message |
-| --continue   |  -c   | string  |    Prompt the user if the commit message is not valid, instead of stopping the process |
-| --help       |  -h   | boolean |                                                              Learn about library usage |
-
-
 ### Workflow integration
 
 Validate commit messages on commit-msg hook by adding the following code in the .git/hooks/commit-msg file : 
@@ -180,6 +169,17 @@ gbvalidator && gcvalidator -src "$1"
 
 You can find git hooks examples in the ./hooks/ folder.
 To install them just paste them in the .git/hooks/ folder of your repositories.
+
+
+## options
+
+| Option       | Alias |  Type   |                                                                            description |
+| :----------  | :---: | :-----: | -------------------------------------------------------------------------------------: |
+| --src        |  -s   | string  | The path of the temporary file containing the commit message (ex: .git/COMMIT_EDITMSG) |
+| --patterns   |  -p   | string  |                                     Use custom regexps. You can send multiple patterns |
+| --message    |  -m   | string  |                                   Add a custom message at the end of the error message |
+| --continue   |  -c   | string  |    Prompt the user if the commit message is not valid, instead of stopping the process |
+| --help       |  -h   | boolean |                                                              Learn about library usage |
 
 
 ## Contributors
