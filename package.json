@@ -9,8 +9,7 @@
     "git",
     "git hook",
     "pre push",
-    "pre commit",
-    "husky"
+    "pre commit"
   ],
   "homepage": "https://github.com/DWTechs/GitCommitValidator",
   "main": "./lib/main.js",
