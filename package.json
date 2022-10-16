@@ -1,6 +1,6 @@
 {
   "name": "@dwtechs/gitcommitvalidator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Git commit message validator for clean workflow and better readability",
   "keywords": [
     "commit message",
