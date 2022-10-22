@@ -1,5 +1,5 @@
 const ValidationService = require("../lib/validate.js");
-const customPatterns = ['^(build|ci|doc|fut|fix|perf|refactor|style|test|chore|revert)\\([a-z0-9]{2,16}\\): \\[[A-Za-z0-9\\#-]{2,12}\\] [A-Za-z0-9 !-]{5,140}$'];
+const customPatterns = ['^(build|ci|doc|fut|fix|perf|refactor|style|test|chore|revert)\\([a-z0-9]{2,16}\\): \\[[A-Za-z0-9\\#-]{2,12}\\] [A-Za-z0-9 !-_]{5,140}$'];
 
 // git commit -m "feat(lang): [#346] add polish language"
 // git commit -m "feat(parser): [#546] add ability to parse arrays"
