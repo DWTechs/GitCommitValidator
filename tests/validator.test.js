@@ -20,14 +20,12 @@ test("feat(config): [neo-118] BREAKING! allow provided config object to extend o
   expect(ValidationService.checkCommitMsg("feat(config): [neo-118] BREAKING! allow provided config object to extend other configs", '', '')).toBe(true);
 });
 
-test("fut(lang): [#346] add polish language", () => {
-  expect(ValidationService.checkCommitMsg("fut(lang): [#346] add polish language", customPatterns, '')).toBe(true);
+test("Merge branch 'master' of github.com-dwtechs:DWTechs/GitCommitValidator", () => {
+  expect(ValidationService.checkCommitMsg("Merge branch 'master' of github.com-dwtechs:DWTechs/GitCommitValidator", '', '')).toBe(true);
 });
 
 
-
 // //false
-
 
 test("feature(lang): [#346] add polish language", () => {
   expect(ValidationService.checkCommitMsg("feature(lang): [#346] add polish language", '', '')).toBe(false);
@@ -49,10 +47,17 @@ test("feat(lang): [#346] ", () => {
   expect(ValidationService.checkCommitMsg("feat(lang): [#346] ", '', '')).toBe(false);
 });
 
+test("Merge branch 'dev' of github.com-dwtechs:DWTechs/GitCommitValidator", () => {
+  expect(ValidationService.checkCommitMsg("Merge branch 'dev' of github.com-dwtechs:DWTechs/GitCommitValidator", '', '')).toBe(false);
+});
 
 
 
 // // custom patterns
+
+test("fut(lang): [#346] add polish language", () => {
+  expect(ValidationService.checkCommitMsg("fut(lang): [#346] add polish language", customPatterns, '')).toBe(true);
+});
 
 test("feat(lang): [#346] add polish language", () => {
   expect(ValidationService.checkCommitMsg("feat(lang): [#346] add polish language", customPatterns, '')).toBe(false);

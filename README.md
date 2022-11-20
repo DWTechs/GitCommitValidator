@@ -105,10 +105,20 @@ Le library will then read the file in order to get the commit message.
 
 ### Patterns
 
-- Default : **^(build|ci|doc|feat|fix|perf|refactor|style|test|chore|revert)\([a-z0-9]{2,16}\): \[[A-Za-z0-9\\#-]{2,12}\] [A-Za-z0-9 !-_]{5,140}$**
+#### Default patterns 
 
-The pattern follows the principles described [here](https://dwtechs.github.io/efficient-git/conventional-commit/).
+| name       | Pattern             |
+| :--------- | :------------------ |
+| commit     | **^(build\|ci\|doc\|feat\|fix\|perf\|refactor\|style\|test\|chore\|revert)\([a-z0-9]{2,16}\): \[[A-Za-z0-9\\#-]{2,12}\] [A-Za-z0-9 !-_]{5,140}$** |
+| merge      | **^Merge branch '([a-zA-Z0-9\\#\-_:\/\\.\+]{5,65})' of ([a-zA-Z0-9\\#\-_:\/\\.\+]{10,90})$** |
+
+
+The commit default pattern follows the principles described [here](https://dwtechs.github.io/efficient-git/conventional-commit/).
 Which is a simplified version of conventional commits.
+
+The merge default pattern is the default merge pattern used when Git is merging branches.
+
+#### Custom patterns
 
 You can use your own custom patterns by adding an optional regexp :
 

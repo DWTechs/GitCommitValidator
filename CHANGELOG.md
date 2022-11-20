@@ -1,3 +1,7 @@
+Version 0.1.3 (November 20th 2022)
+-----------------------------
+- Add default git merge pattern into default patterns
+
 Version 0.1.2 (October 22th 2022)
 -----------------------------
 - Authorize "_" character into pattern
